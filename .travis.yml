@@ -1,0 +1,21 @@
+language: cpp # установка языка и необходимых для него инструментов
+
+addons: # определяем необходимые пакеты
+  apt:
+    sources: # источники, откуда берутся пакеты
+      - george-edison55-precise-backports
+    packages: # список пакетов
+      - cmake
+      - cmake-data
+      - mingw-w64
+
+before_install: # выполните все команды, которые необходимо выполнить перед установкой зависимостей
+  - pip install --user cpp-coveralls
+
+script: # инструкции, которые должны выполниться
+- cmake .
+- make
+- ./runUnitTests
+
+after_success: # когда сборка завершается успешно, результат отображается в переменной среды TRAVIS_TEST_RESULT
+  - coveralls --root . -E ".*gtest.*" -E ".*CMakeFiles.*"
