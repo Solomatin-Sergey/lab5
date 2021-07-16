@@ -43,7 +43,7 @@ TEST(Transaction, test2)
 	B.set_fee(5);
 	EXPECT_EQ(B.fee(), 5);
 }
-TEST(Transaction, test4)
+TEST(Transaction, test3)
 {
 	Transaction B;
 	Account A1(1, 1000);
@@ -51,7 +51,7 @@ TEST(Transaction, test4)
 	EXPECT_ANY_THROW(B.Make(A1, A2, -400));
 	EXPECT_ANY_THROW(B.Make(A1, A2, 60));
 }
-TEST(Transaction, test5)
+TEST(Transaction, test4)
 {
 	Transaction B;
 	Account A1(1, 1000);
@@ -59,14 +59,14 @@ TEST(Transaction, test5)
 	B.set_fee(300);
 	EXPECT_FALSE(B.Make(A1, A2, 400));
 }
-TEST(Transaction, test6)
+TEST(Transaction, test5)
 {
 	Transaction B;
 	Account A1(1, 1000);
 	Account A2(2, 200);
 	EXPECT_ANY_THROW(B.Make(A1, A2, -400));
 }
-TEST(Transaction, test7)
+TEST(Transaction, test6)
 {
 	Transaction B;
 	Account A1(1, 1000);
